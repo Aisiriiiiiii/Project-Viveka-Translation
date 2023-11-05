@@ -1,4 +1,3 @@
-import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import uic
@@ -53,6 +52,7 @@ class SecondWindow(QMainWindow):
         detokenizer = MosesDetokenizer(lang='en')
         with open(fname, "r", encoding="utf-8") as file:
                 text = file.read()
+        target_lang = 'ge'        
         translated_texts = {}
         tokenized_text = tokenizer.tokenize(text, return_str=True)
         translated_text = lt.translate(tokenized_text, 'en', 'ge')
@@ -78,12 +78,12 @@ class SecondWindow(QMainWindow):
         
         with open(fname, "r", encoding="utf-8") as file:
                 text = file.read()
-
+        target_lang = 'fr'
         translated_texts = {}
         tokenized_text = tokenizer.tokenize(text, return_str=True)
         translated_text = lt.translate(tokenized_text, 'en', 'fr')
         detokenized_text = detokenizer.detokenize(translated_text.split('\n'))
-        translated_texts[lang] = detokenized_text
+        translated_texts[target_lang] = detokenized_text
 
 
         for lang, translated_text in translated_texts.items():
@@ -105,7 +105,7 @@ class SecondWindow(QMainWindow):
         
         with open(fname, "r", encoding="utf-8") as file:
                 text = file.read()
-
+        target_lang = 'ru'
         translated_texts = {}
         tokenized_text = tokenizer.tokenize(text, return_str=True)
         translated_text = lt.translate(tokenized_text, 'en', 'ru')
