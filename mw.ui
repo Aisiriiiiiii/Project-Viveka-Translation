@@ -231,7 +231,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>(Please use a Text Document (.txt)</string>
+     <string>(Please use a Text Document (.txt))</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
