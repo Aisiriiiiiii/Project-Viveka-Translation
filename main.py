@@ -52,15 +52,16 @@ class SecondWindow(QMainWindow):
         detokenizer = MosesDetokenizer(lang='en')
         with open(fname, "r", encoding="utf-8") as file:
                 text = file.read()
-        target_lang = 'ge'        
+        target_lang = 'de'        
         translated_texts = {}
         tokenized_text = tokenizer.tokenize(text, return_str=True)
-        translated_text = lt.translate(tokenized_text, 'en', 'ge')
+        translated_text = lt.translate(tokenized_text, 'en', 'de')
         detokenized_text = detokenizer.detokenize(translated_text.split('\n'))
-        translated_texts[lang] = detokenized_text
+        translated_texts[target_lang] = detokenized_text
 
 
         for lang, translated_text in translated_texts.items():
+            global docpath
             doc = docx.Document()
             doc.add_heading(f"Translation to {lang}:", level=1)
             doc.add_paragraph(translated_text)
@@ -87,6 +88,7 @@ class SecondWindow(QMainWindow):
 
 
         for lang, translated_text in translated_texts.items():
+            global docpath
             doc = docx.Document()
             doc.add_heading(f"Translation to {lang}:", level=1)
             doc.add_paragraph(translated_text)
@@ -110,10 +112,11 @@ class SecondWindow(QMainWindow):
         tokenized_text = tokenizer.tokenize(text, return_str=True)
         translated_text = lt.translate(tokenized_text, 'en', 'ru')
         detokenized_text = detokenizer.detokenize(translated_text.split('\n'))
-        translated_texts[lang] = detokenized_text
+        translated_texts[target_lang] = detokenized_text
 
 
         for lang, translated_text in translated_texts.items():
+            global docpath
             doc = docx.Document()
             doc.add_heading(f"Translation to {lang}:", level=1)
             doc.add_paragraph(translated_text)
@@ -133,18 +136,16 @@ class FinalWindow(QMainWindow):
         uic.loadUi('finalwindow.ui',self)
         self.opendoc.clicked.connect(self.openDocument)
         self.show()
-        
-    def openDocument():
-        global docpath  
+    
+    
+    def openDocument(self):
+        global docpath 
+        print("docpath:", docpath) 
         if docpath:
             doc_url = QUrl.fromLocalFile(docpath)
             QDesktopServices.openUrl(doc_url)
         else:
             QMessageBox.critical(None, "Error", "No document path available.")
-        
-        
-
-        
         
                 
 def main():
