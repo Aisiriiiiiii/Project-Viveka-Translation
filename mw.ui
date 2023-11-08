@@ -130,7 +130,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Select pdf to be translated:</string>
+     <string>Select file to be translated:</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

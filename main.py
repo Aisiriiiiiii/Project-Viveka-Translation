@@ -65,7 +65,8 @@ class SecondWindow(QMainWindow):
             doc = docx.Document()
             doc.add_heading(f"Translation to {lang}:", level=1)
             doc.add_paragraph(translated_text)
-            docpath = doc.save(f"translated_text_{lang}.docx")
+            doc.save(f"translated_text_{lang}.docx")
+            docpath = (f"translated_text_{lang}.docx")
 
         print("Translation to DOCX Successful") 
         
@@ -92,7 +93,8 @@ class SecondWindow(QMainWindow):
             doc = docx.Document()
             doc.add_heading(f"Translation to {lang}:", level=1)
             doc.add_paragraph(translated_text)
-            docpath = doc.save(f"translated_text_{lang}.docx")
+            doc.save(f"translated_text_{lang}.docx")
+            docpath = (f"translated_text_{lang}.docx")
             
         print("Translation to DOCX Successful") 
         
@@ -120,7 +122,8 @@ class SecondWindow(QMainWindow):
             doc = docx.Document()
             doc.add_heading(f"Translation to {lang}:", level=1)
             doc.add_paragraph(translated_text)
-            docpath = doc.save(f"translated_text_{lang}.docx") 
+            doc.save(f"translated_text_{lang}.docx") 
+            docpath = (f"translated_text_{lang}.docx")
             
             
         print("Translation to DOCX Successful")
